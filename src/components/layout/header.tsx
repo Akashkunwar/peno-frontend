@@ -10,11 +10,13 @@ import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 import { useEscapeKey } from "@/hooks/use-escape-key";
 import { useIsMounted } from "@/hooks/use-is-mounted";
 
+const AGNI_URL = "https://agnidev.com";
+
 const navLinks = [
   { label: "Shop", href: "/shop" },
   { label: "Collections", href: "/collections" },
   { label: "Corporate Gifting", href: "/corporate-gifting" },
-  { label: "Other Services", href: "#", children: [{ label: "Marketing", href: "/marketing-services" }, { label: "IT Services", href: "/it-services" }] },
+  { label: "Other Services", href: "#", children: [{ label: "Marketing", href: AGNI_URL, external: true }, { label: "IT Services", href: AGNI_URL, external: true }] },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -36,7 +38,18 @@ function DropdownMenu({ link, transparent }: { link: typeof navLinks[number]; tr
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             className="absolute top-full left-0 mt-1 bg-cream border border-ink/5 shadow-xl rounded-sm py-2 min-w-[200px]"
           >
-            {link.children.map(c => (
+            {link.children.map(c => c.external ? (
+              <a
+                key={c.label}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 px-5 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-cream-dark transition-colors"
+              >
+                <span className="w-1 h-1 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                {c.label}
+              </a>
+            ) : (
               <Link
                 key={c.label}
                 href={c.href}
@@ -118,7 +131,9 @@ function MobileMenuTrigger({ transparent }: { transparent?: boolean }) {
                           className="overflow-hidden"
                         >
                           <div className="pl-4 pb-2 space-y-1">
-                            {link.children.map(c => (
+                            {link.children.map(c => c.external ? (
+                              <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block py-2.5 text-base text-ink-muted hover:text-ink transition-colors">{c.label}</a>
+                            ) : (
                               <Link key={c.label} href={c.href} onClick={() => setOpen(false)} className="block py-2.5 text-base text-ink-muted hover:text-ink transition-colors">{c.label}</Link>
                             ))}
                           </div>

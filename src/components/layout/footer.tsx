@@ -4,7 +4,9 @@ import { useState } from "react";
 import { ArrowRight, Mail, Check } from "lucide-react";
 import { InstagramIcon, LinkedinIcon, TwitterIcon } from "@/components/ui/brand-icons";
 
-const links = {
+interface FooterLink { label: string; href: string; external?: boolean; }
+
+const links: Record<string, FooterLink[]> = {
   Shop: [
     { label: "All Products", href: "/shop" },
     { label: "Collections", href: "/collections" },
@@ -13,10 +15,10 @@ const links = {
     { label: "Gift Hampers", href: "/shop?collection=Gift+Hampers" },
   ],
   Services: [
-    { label: "Marketing", href: "/marketing-services" },
-    { label: "IT Services", href: "/it-services" },
-    { label: "Branding", href: "/marketing-services" },
-    { label: "AI Development", href: "/it-services" },
+    { label: "Marketing", href: "https://agnidev.com", external: true },
+    { label: "IT Services", href: "https://agnidev.com", external: true },
+    { label: "Branding", href: "https://agnidev.com", external: true },
+    { label: "AI Development", href: "https://agnidev.com", external: true },
   ],
   Company: [
     { label: "About", href: "/about" },
@@ -97,7 +99,11 @@ export function Footer() {
                   <ul className="space-y-3">
                     {l.map(i => (
                       <li key={i.label}>
-                        <Link href={i.href} className="text-sm text-white/60 hover:text-white transition-colors">{i.label}</Link>
+                        {i.external ? (
+                          <a href={i.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/60 hover:text-white transition-colors">{i.label}</a>
+                        ) : (
+                          <Link href={i.href} className="text-sm text-white/60 hover:text-white transition-colors">{i.label}</Link>
+                        )}
                       </li>
                     ))}
                   </ul>

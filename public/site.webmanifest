@@ -1,0 +1,25 @@
+{
+  "name": "PENO — Premium Corporate Gifting, Marketing & IT Services",
+  "short_name": "PENO",
+  "description": "India's premium gifting studio for corporate gifts, luxury hampers, employee welcome kits, custom merchandise, branding, and technology solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F6F2",
+  "theme_color": "#0C3824",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -86,7 +86,4 @@ img[loading="lazy"] {
   border-radius: 2px;
 }
 
-/* Subtle paper texture for cream backgrounds */
-.bg-cream {
-  position: relative;
-}
+

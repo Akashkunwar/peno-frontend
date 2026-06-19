@@ -3,8 +3,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/ui/animations";
 import { Button } from "@/components/ui/button";
 import { itServices } from "@/data";
-import { Brain, Cloud, Smartphone, Building2, type LucideIcon } from "lucide-react";
-import Link from "next/link";
+import { Brain, Cloud, Smartphone, Building2, ArrowUpRight, type LucideIcon } from "lucide-react";
 
 const icons: Record<string, LucideIcon> = { Brain, Cloud, Smartphone, Building2 };
 
@@ -35,7 +34,12 @@ export function ITServicesSection() {
           })}
         </div>
         <div className="text-center mt-14">
-          <Link href="/it-services"><Button>View IT Services</Button></Link>
+          <a href="https://agnidev.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 group">
+            <Button className="group-hover:bg-velvet-deep transition-colors">
+              View IT Services
+              <ArrowUpRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Button>
+          </a>
         </div>
       </div>
     </section>

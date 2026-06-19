@@ -2,8 +2,7 @@
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { marketingServices } from "@/data";
-import { Palette, Share2, TrendingUp, Camera, type LucideIcon } from "lucide-react";
-import Link from "next/link";
+import { Palette, Share2, TrendingUp, Camera, ArrowUpRight, type LucideIcon } from "lucide-react";
 import { FadeIn } from "@/components/ui/animations";
 
 const icons: Record<string, LucideIcon> = { Palette, Share2, TrendingUp, Camera };
@@ -35,7 +34,12 @@ export function MarketingSection() {
           })}
         </div>
         <div className="text-center mt-14">
-          <Link href="/marketing-services"><Button variant="outline">View Marketing Services</Button></Link>
+          <a href="https://agnidev.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 group">
+            <Button variant="outline" className="group-hover:border-accent group-hover:text-accent transition-colors">
+              View Marketing Services
+              <ArrowUpRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Button>
+          </a>
         </div>
       </div>
     </section>
