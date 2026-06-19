@@ -1,0 +1,2 @@
+"use client"; import { useState, useCallback } from "react"; import { products } from "@/data";
+export function useSearch(){ const [q,setQ]=useState(""); const [o,setO]=useState(false); const r=q.length>=2?products.filter(p=>p.name.toLowerCase().includes(q.toLowerCase())||p.description.toLowerCase().includes(q.toLowerCase())||p.category.toLowerCase().includes(q.toLowerCase())||p.tags.some(t=>t.toLowerCase().includes(q.toLowerCase()))).slice(0,8):[]; return { query:q, setQuery:setQ, results:r, isOpen:o, openSearch:()=>setO(true), closeSearch:()=>{setO(false);setQ("")} }; }

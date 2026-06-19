@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-cream: #F8F6F2;
+  --color-cream-dark: #E4DFD2;
+  --color-cream-deep: #D4C5AE;
+  --color-ink: #1A1A1A;
+  --color-ink-muted: #5C5C5C;
+  --color-ink-soft: #8A8A8A;
+  --color-accent: #B89B72;
+  --color-accent-dark: #9E8560;
+  --color-accent-light: #D4C5AE;
+  --color-velvet: #0C3824;
+  --color-velvet-deep: #062617;
+  --color-velvet-mid: #165435;
+  --color-velvet-light: #1D6B44;
+  --color-velvet-surface: #214B36;
+  --color-white: #FFFFFF;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --animate-fade-up: fade-up 0.7s ease-out forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes fade-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background-color: var(--color-velvet);
+  color: var(--color-cream);
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-cream-deep);
+  border-radius: 5px;
+  border: 2px solid var(--color-cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Image loading shimmer */
+img[loading="lazy"] {
+  background: linear-gradient(90deg, #E4DFD2 0%, #F0EBE0 50%, #E4DFD2 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* Subtle text rendering improvements */
+.font-serif {
+  font-feature-settings: "liga", "dlig", "kern";
+}
+
+/* Better focus rings */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Subtle paper texture for cream backgrounds */
+.bg-cream {
+  position: relative;
 }
